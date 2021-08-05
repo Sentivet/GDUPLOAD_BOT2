@@ -1,16 +1,16 @@
 import os
 import wget
 import glob
+import requests
 import youtube_dl
 from pySmartDL import SmartDL
 from urllib.error import HTTPError
 from youtube_dl import DownloadError
 from bot import DOWNLOAD_DIRECTORY, LOGGER
 
-
 def download_file(url, dl_path):
   try:
-    dl = SmartDL(url, dl_path, progress_bar=False)
+    dl = SmartDL(url, dl_path, progress_bar=True)
     LOGGER.info(f'Downloading: {url} in {dl_path}')
     dl.start()
     return True, dl.get_dest()
